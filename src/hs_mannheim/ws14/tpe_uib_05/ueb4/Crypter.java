@@ -8,9 +8,9 @@ import java.util.List;
  * {@link #encrypt(String)} Methode) und wieder entschluesseln (ueber die
  * {@link #decrypt(String)} Methode).
  *
- * Der Eingabetext ({@literal message}) darf nur aus den Gro√ü-Buchstaben A-Z
- * bestehen. Kleinbuchstaben werden in Gro√übuchstaben umgewandelt, alle anderen
- * Zeichen werden ohne Rueckmeldung entfernt (einschlie√ülich der Leerzeichen).
+ * Der Eingabetext ({@literal message}) darf nur aus den Groﬂ-Buchstaben A-Z
+ * bestehen. Kleinbuchstaben werden in Groﬂbuchstaben umgewandelt, alle anderen
+ * Zeichen werden ohne Rueckmeldung entfernt (einschlieﬂlich der Leerzeichen).
  *
  * Zwischen den beiden Methoden muss bei gleichem Schluessel {@code key}
  * folgendes gelten: {@code text.equals(decrypt(encrypt(text)) == true}.
@@ -24,7 +24,7 @@ public interface Crypter {
 	 * Verschluesselt den gegebenen Text mit dem angegebenen Schluessel.
 	 *
 	 * @param message
-	 *            Nachricht, die Verschluesselt werden soll.
+	 *            Nachricht, die verschluesselt werden soll.
 	 *
 	 * @return verschluesselter Text.
 	 * @throws CrypterException
@@ -38,7 +38,7 @@ public interface Crypter {
 	 * Verschluesselt den gegebenen Text mit dem angegebenen Schluessel.
 	 *
 	 * @param messages
-	 *            Nachrichten, die Verschluesselt werden soll.
+	 *            Nachrichten, die verschluesselt werden soll.
 	 *
 	 * @return verschluesselte Texte.
 	 * @throws CrypterException
@@ -54,7 +54,7 @@ public interface Crypter {
 	 * @param cypherText
 	 *            Nachricht, die entschluesselt werden soll.
 	 *
-	 * @return entschlusselter Text.
+	 * @return entschluesselter Text.
 	 * @throws CrypterException
 	 *             Wird geworfen, wenn Probleme mit der Verschluesselung
 	 *             auftreten.
