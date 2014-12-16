@@ -3,7 +3,7 @@ package hs_mannheim.ws14.tpe_uib_05.ueb4;
 import java.util.List;
 
 /**
- * Diese Klasse CrypterNull verschluesselt den Text nicht. Die Ausgabe der
+ * Diese Klasse verschluesselt den Text nicht. Die Ausgabe der
  * Methoden entspricht der Eingabe.
  * 
  * @author Dennis Keßler 1326697

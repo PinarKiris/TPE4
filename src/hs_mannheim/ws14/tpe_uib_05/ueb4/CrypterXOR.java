@@ -2,6 +2,15 @@ package hs_mannheim.ws14.tpe_uib_05.ueb4;
 
 import java.util.List;
 
+/**
+ * Diese Klasse dient dazu, einen Text nach dem XOR-Verfahren zu
+ * verschluesseln.
+ * 
+ * @author Dennis Keßler 1326697
+ * @author Pınar Kırış 1332722
+ * 
+ */
+
 public class CrypterXOR implements Crypter {
 
 	@Override
