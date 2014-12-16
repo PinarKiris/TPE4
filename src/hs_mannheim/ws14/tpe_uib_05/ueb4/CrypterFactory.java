@@ -1,9 +1,17 @@
 package hs_mannheim.ws14.tpe_uib_05.ueb4;
 
+/**
+ * Diese Klasse umfasst die Auswahl einer geeigneten Verschluesselungsmethode,
+ * wobei diese durch eine Enumeration ermoeglicht wird.
+ * 
+ * @author Dennis Keßler 1326697
+ * @author Pınar Kırış 1332722
+ */
+
 public class CrypterFactory {
 
 	/**
-	 * Methode zum erstelle einer Verschluesselungsklasse
+	 * Methode zum erstellen einer Verschluesselungsklasse
 	 * 
 	 * @param key
 	 *            Schluessel nach dem dem verschluesselt wird
@@ -11,6 +19,7 @@ public class CrypterFactory {
 	 *            Auswahl des Verschluesselungsverfahrens (Enum)
 	 * @return gibt eines Instanz der Verschluesslungsklasse zurueck.
 	 * @throws CrypterException
+	 *             Exception bei ungueltigem Schluessel
 	 */
 
 	public static Crypter createCrypter(String key, Enumeration crypterTyp)
@@ -19,74 +28,49 @@ public class CrypterFactory {
 		switch (crypterTyp) {
 
 		case CAESAR:
-			try {
+			if (key.length() != 1
+					|| (key.charAt(0) < 'A' || key.charAt(0) > 'Z')) {
+				throw new IllegalKeyException("Ungültiger Schlüssel");
+			} else {
 				return new CrypterCaesar(key);
-			} catch (IllegalKeyException i) {
-				System.out.println("CrypterFactory meldet:\n");
-				System.out.println(i.getMessage());
+			}
 
-				throw new CrypterException(
-						"\nACHTUNG!\nDer CaesarCrypter mit dem Schluessel '"
-								+ key
-								+ "' wurde nicht angelegt! Verwenden Sie einen anderen Schluessel\n");
-				// System.out
-				// .println("\n::CAESAR-Verschluesselung::\nEs sind nur Schluessel mit einem Zeichen erlaubt.\n"
-				// + "Es duerfen nur Zeichen zwischen A-Z verwendet werden.");
-				// returns null, als Rueckgabewert, statt der CrypterCaesar
-				// Instanz
+		case SUBSTITUTION:
+			if (key.length() != 26) {
+				throw new IllegalKeyException("Ungültiger Schlüssel");
+			} else {
+				for (int i = 0; i < key.length(); i++) {
+
+					if (key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
+						throw new IllegalKeyException("Ungültiger Schlüssel");
+					}
+				}
+				return new CrypterSubstitution(key);
 			}
 
 		case XOR:
-			try {
-				return new CrypterXOR(key);
-			} catch (IllegalKeyException i) {
-				System.out.println("CrypterFactory meldet:\n");
-				System.out.println(i.getMessage());
+			for (int i = 0; i < key.length(); i++) {
+				if (key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
+					throw new IllegalKeyException("Ungültiger Schlüssel");
+				}
+			}
+			return new CrypterXOR(key);
 
-				throw new CrypterException(
-						"\nACHTUNG!\nDer CaesarXOR mit dem Schluessel '"
-								+ key
-								+ "' wurde nicht angelegt! Verwenden Sie einen anderen Schluessel\n");
-				// System.out
-				// .println("\n::XOR-Verschluesselung::\nEs sind nur Schluessel mit folgenden Zeichen erlaubt:\n"
-				// + "Es duerfen nur Zeichen zwischen A-Z verwendet werden.");
-				// returns null, als Rueckgabewert, statt der CrypterXOR
-				// Instanz
-			}
 		case NULL:
-			if (key != null) {
-				throw new IllegalKeyException(
-						"Fuer die Nullchiffre hat der Schluessel keine Bedeutung");
-			}
 			return new CrypterNull();
 
 		case REVERSE:
-			if (key != null) {
-				throw new IllegalKeyException(
-						"Fuer die Umkehrverschluesselung hat der Schluessel keine Bedeutung");
+			for (int i = 0; i < key.length(); i++) {
+				if (key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
+					throw new IllegalKeyException("Ungültiger Schlüssel");
+				}
 			}
 			return new CrypterReverse();
 
-		case SUBSTITUTION:
-			if (key != null) {
-				throw new IllegalKeyException(
-						"Fuer das Subsitutionschiffre hat der Schluessel keine Bedeutung");
-			}
-			return new CrypterSubstitution();
-
 		default:
-			throw new CrypterException("Der gewünschte Crypter existiert nicht");
+			throw new CrypterException(
+					"Der gewünschte Verschluesselungstyp existiert nicht");
 		}
-	}
-
-	/**
-	 * @param selectedCrypter
-	 * @return
-	 * @throws CrypterException
-	 */
-	public static Crypter createCrypter(Enumeration crypterTyp)
-			throws CrypterException {
-		return createCrypter(null, crypterTyp);
 	}
 
 }

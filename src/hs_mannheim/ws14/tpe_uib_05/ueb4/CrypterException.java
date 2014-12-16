@@ -1,7 +1,8 @@
 package hs_mannheim.ws14.tpe_uib_05.ueb4;
 
 /**
- * Exception, die dazu dient Fehler bei der Verschluesselung zu behandeln
+ * Diese Klasse umfasst eine Exception, die dazu dient auftretende Fehler bei
+ * einer Verschluesselung zu behandeln.
  * 
  * @author Dennis Keßler 1326697
  * @author Pınar Kırış 1332722
