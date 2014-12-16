@@ -104,10 +104,10 @@ public class CrypterCaesar implements Crypter {
 	}
 
 	@Override
-	public List<String> decrypt(List<String> cypherText)
+	public List<String> decrypt(List<String> cypherTexte)
 			throws CrypterException {
 		List<String> ergebnis = new LinkedList<String>();
-		for (String text : cypherText) {
+		for (String text : cypherTexte) {
 			ergebnis.add(encrypt(text));
 		}
 		return ergebnis;

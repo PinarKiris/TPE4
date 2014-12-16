@@ -38,7 +38,7 @@ public interface Crypter {
 	 * Verschluesselt den gegebenen Text mit dem angegebenen Schluessel.
 	 *
 	 * @param messages
-	 *            Nachrichten, die verschluesselt werden soll.
+	 *            Nachrichten, die verschluesselt werden sollen.
 	 *
 	 * @return verschluesselte Texte.
 	 * @throws CrypterException
@@ -66,7 +66,7 @@ public interface Crypter {
 	 * Entschluesselt den gegebenen Text mit dem angegebenen Schluessel.
 	 *
 	 * @param cypherTexte
-	 *            Nachrichten, die entschluesselt werden soll.
+	 *            Nachrichten, die entschluesselt werden sollen.
 	 *
 	 * @return entschluesselte Texte.
 	 * @throws CrypterException
@@ -74,6 +74,6 @@ public interface Crypter {
 	 *             auftreten.
 	 */
 
-	public List<String> decrypt(List<String> cypherText)
+	public List<String> decrypt(List<String> cypherTexte)
 			throws CrypterException;
 }
