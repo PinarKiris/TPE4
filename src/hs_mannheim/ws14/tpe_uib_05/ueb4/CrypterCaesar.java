@@ -2,7 +2,6 @@ package hs_mannheim.ws14.tpe_uib_05.ueb4;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.HashMap;
 
 /**
  * Diese Klasse dient dazu, einen Text nach dem Caesar-Verfahren zu
