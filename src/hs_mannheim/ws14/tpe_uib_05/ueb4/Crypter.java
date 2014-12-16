@@ -74,6 +74,6 @@ public interface Crypter {
 	 *             auftreten.
 	 */
 
-	public List<String> decrypt(List<String> cypherTexte)
+	public List<String> decrypt(List<String> cypherText)
 			throws CrypterException;
 }
