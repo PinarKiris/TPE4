@@ -8,14 +8,14 @@ import java.util.List;
  * {@link #encrypt(String)} Methode) und wieder entschluesseln (ueber die
  * {@link #decrypt(String)} Methode).
  *
- * Der Eingabetext ({@literal message}) darf nur aus den Groß-Buchstaben A-Z
- * bestehen. Kleinbuchstaben werden in Großbuchstaben umgewandelt, alle anderen
- * Zeichen werden ohne Rueckmeldung entfernt (einschließlich der Leerzeichen).
+ * Der Eingabetext ({@literal message}) darf nur aus den Groï¿½-Buchstaben A-Z
+ * bestehen. Kleinbuchstaben werden in Groï¿½buchstaben umgewandelt, alle anderen
+ * Zeichen werden ohne Rueckmeldung entfernt (einschlieï¿½lich der Leerzeichen).
  *
  * Zwischen den beiden Methoden muss bei gleichem Schluessel {@code key}
  * folgendes gelten: {@code text.equals(decrypt(encrypt(text)) == true}.
  *
- * 
+ * @author Thomas Smits
  */
 
 public interface Crypter {

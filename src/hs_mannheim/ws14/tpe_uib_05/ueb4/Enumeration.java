@@ -1,58 +1,45 @@
 package hs_mannheim.ws14.tpe_uib_05.ueb4;
 
+/**
+ * Bietet eine Reihe von Auswahlmöglichkeiten der vorhanden
+ * Verschluesselungsmethoden, wobei jede Konstante gespeichert und die Klasse
+ * der Verschlüsselungsart ueber getCrypter(), einen Crypter vom Typ der
+ * Verschlüsselungsklasse zurueck gibt.
+ * 
+ * @author Dennis Keßler 1326697
+ * @author Pınar Kırış 1332722
+ *
+ */
+
 public enum Enumeration {
 
 	/**
-	 * Ceasar-Verschluesselungsmethode instanziiert einen Crypter vom Typ
-	 * CrypterCaesar
+	 * Auswahlelement "CAESAR" des Enums
 	 */
-
-	CAESAR(new CrypterCaesar()),
+	
+	CAESAR,
 
 	/**
-	 * Substitutions-Versschluesselungmethode instanziiert einen Crypter vom Typ
-	 * CrypterSubstitution
+	 * Auswahlelement "NULL" des Enums
 	 */
-
-	SUBSTITUTION(new CrypterSubstitution()),
+	
+	NULL,
 
 	/**
-	 * XOR-Versschluesselungmethode instanziiert einen Crypter vom Typ
-	 * CrypterXOR
+	 * Auswahlelement "REVERSE" des Enums
 	 */
-
-	XOR(new CrypterXOR()),
+	
+	REVERSE,
 
 	/**
-	 * Nullchiffre-Versschluesselungmethode instanziiert einen Crypter vom Typ
-	 * CrypternNull
+	 * Auswahlelement "SUBSTITUTION" des Enums
 	 */
-
-	NULL(new CrypterNull()),
+	
+	SUBSTITUTION,
 
 	/**
-	 * Umkehr-Versschluesselungmethode instanziiert einen Crypter vom Typ
-	 * CrypterReverse
+	 * Auswahlelement "XOR" des Enums
 	 */
-
-	REVERSE(new CrypterReverse());
-
-	// der Typ des Crypters wird durch den Konstruktor festgelegt
-	private Crypter crypterTyp;
-
-	/**
-	 * @param crypterTyp
-	 *            neue Instanz der zuverwendenden Verschlüsselungsklasse
-	 */
-	private Enumeration(Crypter crypterTyp) {
-		this.crypterTyp = crypterTyp;
-	}
-
-	/**
-	 * @return gibt den gespeicherten Crypter zurück, der einer Instanz der
-	 *         Verschlüsselungs Klasse entspricht
-	 */
-	public Crypter getCrypter() {
-		return this.crypterTyp;
-	}
+	
+	XOR;
 }
