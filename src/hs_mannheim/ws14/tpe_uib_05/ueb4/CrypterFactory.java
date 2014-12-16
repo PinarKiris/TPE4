@@ -17,7 +17,7 @@ public class CrypterFactory {
 			throws CrypterException {
 
 		switch (crypterTyp) {
-		
+
 		case CAESAR:
 			try {
 				return new CrypterCaesar(key);
@@ -32,7 +32,7 @@ public class CrypterFactory {
 				// System.out
 				// .println("\n::CAESAR-Verschluesselung::\nEs sind nur Schluessel mit einem Zeichen erlaubt.\n"
 				// + "Es duerfen nur Zeichen zwischen A-Z verwendet werden.");
-				//returns null, als Rueckgabewert, statt der CrypterCaesar
+				// returns null, als Rueckgabewert, statt der CrypterCaesar
 				// Instanz
 			}
 
@@ -50,25 +50,27 @@ public class CrypterFactory {
 				// System.out
 				// .println("\n::XOR-Verschluesselung::\nEs sind nur Schluessel mit folgenden Zeichen erlaubt:\n"
 				// + "Es duerfen nur Zeichen zwischen A-Z verwendet werden.");
-				//returns null, als Rueckgabewert, statt der CrypterXOR
+				// returns null, als Rueckgabewert, statt der CrypterXOR
 				// Instanz
 			}
 		case NULL:
 			if (key != null) {
 				throw new IllegalKeyException(
-						"Dieser Crypter benötigt keinen Schluessel");
+						"Fuer die Nullchiffre hat der Schluessel keine Bedeutung");
 			}
 			return new CrypterNull();
+
 		case REVERSE:
 			if (key != null) {
 				throw new IllegalKeyException(
-						"Dieser Crypter benötigt keinen Schluessel");
+						"Fuer die Umkehrverschluesselung hat der Schluessel keine Bedeutung");
 			}
 			return new CrypterReverse();
+
 		case SUBSTITUTION:
 			if (key != null) {
 				throw new IllegalKeyException(
-						"Dieser Crypter benötigt keinen Schluessel");
+						"Fuer das Subsitutionschiffre hat der Schluessel keine Bedeutung");
 			}
 			return new CrypterSubstitution();
 
