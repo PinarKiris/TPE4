@@ -16,43 +16,24 @@ public class CrypterCaesar implements Crypter {
 
 	private String key;
 
-	/**
-	 * Konstruktor um ein Caesar Verschluesselungsobjekt mit einem
-	 * dazugehoerigen Schluessel zu erzeugen.
-	 * 
-	 * @param key
-	 *            Schluessel
-	 */
-
 	public CrypterCaesar(String key) {
 		this.key = key;
+
 	}
 
 	@Override
 	public String encrypt(String message) throws CrypterException {
-		int shift = ((int) this.key.charAt(0)) - 64;
-		return encrypt(encode(message, shift));
-
+		int shift = (int) this.key.charAt(0) - 64;
+		return encrypt(message, shift);
 	}
 
-	/**
-	 * Diese Methode dient zur Verschluesselung eines Textes mit einer
-	 * festgelegten Verschiebung.
-	 * 
-	 * @param message
-	 *            zu verschluesselnde Nachricht
-	 * @param shift
-	 *            Verschiebung
-	 * @return verschluesselter Text
-	 * 
-	 */
-
-	private String encode(String message, int shift) {
+	private String encrypt(String message, int verschiebung) {
 		message = message.toUpperCase();
 		String ergebnis = "";
-		for (int i = 0; i < message.length() - 1; i++) {
 
-			ergebnis += (char) ((message.charAt(i) - 'A' + shift) % 26 + 'A');
+		for (int i = 0; i < message.length(); i++) {
+			ergebnis = ergebnis
+					+ (char) ((message.charAt(i) - 65 + verschiebung) % 26 + 65);
 		}
 		return ergebnis;
 	}
@@ -63,51 +44,36 @@ public class CrypterCaesar implements Crypter {
 		for (String message : messages) {
 			ergebnis.add(encrypt(message));
 		}
-
 		return ergebnis;
 	}
 
 	@Override
-	public String decrypt(String cypherText) throws CrypterException {
-		int shift = (int) this.key.charAt(0) - 64;
-
-		return decrypt(cypherText, -shift);
+	public String decrypt(String crypterText) throws CrypterException {
+		int shift = ((int) this.key.charAt(0)) - 64;
+		return decrypt(crypterText, -shift);
 	}
 
-	/**
-	 * Diese Methode dient zur Entschluesselung eines Textes mit einer
-	 * festgelegten Verschiebung.
-	 * 
-	 * @param cypherText
-	 *            zu entschluesselnde Nachricht
-	 * @param shift
-	 *            Verschiebung
-	 * @return entschluesselter Text
-	 */
-
-	private String decrypt(String cypherText, int shift) {
-		cypherText = cypherText.toUpperCase();
+	private String decrypt(String message, int shift) {
 		String ergebnis = "";
-		for (int i = 0; i < cypherText.length(); i++) {
+		for (int i = 0; i < message.length(); i++) {
 
-			char zeichen = (char) ((cypherText.charAt(0) - 'A' + shift) % 26 + 'A');
+			char zeichen = (char) ((message.charAt(i) - 65 + shift) % 26 + 65);
 			if (zeichen < 65) {
-				ergebnis += (char) (zeichen + 26);
+				ergebnis = ergebnis + (char) (zeichen + 26);
 			} else {
-				ergebnis += (char) zeichen;
-
+				ergebnis = ergebnis + (char) zeichen;
 			}
 		}
-
 		return ergebnis;
+
 	}
 
 	@Override
-	public List<String> decrypt(List<String> cypherTexte)
+	public List<String> decrypt(List<String> crypterTexte)
 			throws CrypterException {
 		List<String> ergebnis = new LinkedList<String>();
-		for (String text : cypherTexte) {
-			ergebnis.add(encrypt(text));
+		for (String text : crypterTexte) {
+			ergebnis.add(decrypt(text));
 		}
 		return ergebnis;
 	}
