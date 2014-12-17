@@ -16,7 +16,7 @@ public class SecretMessage {
 		geheimbotschaft = caesar.decrypt(geheimbotschaft);
 		geheimbotschaft = sub.decrypt(geheimbotschaft);
 		
-		System.out.println(geheimbotschaft);
+		System.out.println(geheimbotschaft+"");
 
 	}
 }
