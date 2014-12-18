@@ -21,11 +21,22 @@ public class CrypterCaesar implements Crypter {
 
 	}
 
+	/*
+	 * Methode, die für eine uebergebene Nachricht die Verschiebungszahl
+	 * erzeugt, die Nachricht und die Verschiebungsziffer werden dabei an eine
+	 * private interne encrypt Methode weitergeleitet.
+	 */
+
 	@Override
 	public String encrypt(String message) throws CrypterException {
 		int shift = (int) this.key.charAt(0) - 64;
 		return encrypt(message, shift);
 	}
+
+	/*
+	 * Private, interne Methode zur Verschluesselung eines Textes mit Hilfe der
+	 * Caesar Verschluesselung und einer zuvor festgelegten Verschiebungsziffer.
+	 */
 
 	private String encrypt(String message, int shift) {
 		message = message.toUpperCase();
@@ -38,6 +49,12 @@ public class CrypterCaesar implements Crypter {
 		return ergebnis;
 	}
 
+	/*
+	 * Encrypt Methode zu Verschluesselung einer verketteten Liste, dabei wird
+	 * ueber die Liste iteriert und der verschluesselte Text in einer neuen
+	 * Liste gespeichert.
+	 */
+
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
 		List<String> ergebnis = new LinkedList<String>();
@@ -47,11 +64,22 @@ public class CrypterCaesar implements Crypter {
 		return ergebnis;
 	}
 
+	/*
+	 * Methode zur Entschluesselung einer verschluesselten Nachricht, wobei die
+	 * Verschiebung der Verschluesselung entspricht, allerdings mit negativem
+	 * Vorzeichen.
+	 */
+
 	@Override
 	public String decrypt(String crypterText) throws CrypterException {
 		int shift = ((int) this.key.charAt(0)) - 64;
 		return decrypt(crypterText, -shift);
 	}
+
+	/*
+	 * Private, interne Methode zur Entschluesslung eines Textes mit gegebenem
+	 * Verschiebungswert
+	 */
 
 	private String decrypt(String message, int shift) {
 		String ergebnis = "";
@@ -67,6 +95,12 @@ public class CrypterCaesar implements Crypter {
 		return ergebnis;
 
 	}
+
+	/*
+	 * Decrypt Methode zu Entschluesselung einer verketteten Liste, dabei wird
+	 * ueber die Liste iteriert und der entschluesselte Text in einer neuen
+	 * Liste gespeichert.
+	 */
 
 	@Override
 	public List<String> decrypt(List<String> crypterTexte)

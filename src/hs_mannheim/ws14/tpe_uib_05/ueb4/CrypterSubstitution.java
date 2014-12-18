@@ -65,7 +65,7 @@ public class CrypterSubstitution implements Crypter {
 		StringBuffer ergebnis = new StringBuffer();
 		for (int j = 0; j < cypherText.length(); j++) {
 			char zeichen = (cypherText.charAt(j));
-			ergebnis.append(alpha.charAt(entschluesseln(zeichen)));
+			ergebnis.append(alpha.charAt(searchsub(zeichen)));
 		}
 		return ergebnis.toString();
 	}
@@ -79,7 +79,7 @@ public class CrypterSubstitution implements Crypter {
 	 * @return passender Substitutionsbuchstabe
 	 */
 
-	private int entschluesseln(char buchstabe) {
+	private int searchsub(char buchstabe) {
 		for (int j = 0; j < key.length(); j++) {
 			if (buchstabe == key.charAt(j)) {
 				return j;

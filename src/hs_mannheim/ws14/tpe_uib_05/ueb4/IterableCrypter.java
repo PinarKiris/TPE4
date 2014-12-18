@@ -1,5 +1,15 @@
 package hs_mannheim.ws14.tpe_uib_05.ueb4;
 
+/**
+ * Diese Klasse kann sich um ein beliebiges anderes Iterable legen,
+ * wobei der erzeugte Iterator die Eingaben direkt bei der Iteration 
+ * verschluesselt (bzw. entschluesselt).
+ *   
+ * 
+ * @author Dennis Keßler 1326697
+ * @author Pınar Kırış 1332722
+ */
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.LinkedList;
@@ -48,7 +58,7 @@ public class IterableCrypter implements Iterable<String> {
 	 * Methode, die eine interne anonyme Klasse beinhaltet, zur Implementierung
 	 * des Iterators.
 	 */
-	
+
 	@Override
 	public Iterator<String> iterator() {
 		return new Iterator<String>() {
@@ -73,7 +83,7 @@ public class IterableCrypter implements Iterable<String> {
 
 			@Override
 			public void remove() {
-				
+
 			}
 		};
 	}

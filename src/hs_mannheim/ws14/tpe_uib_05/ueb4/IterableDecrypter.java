@@ -1,5 +1,14 @@
 package hs_mannheim.ws14.tpe_uib_05.ueb4;
 
+/**
+ * Diese Klasse kann sich um ein beliebiges anderes Iterable legen,
+ * wobei der erzeugte Iterator die Eingaben direkt bei der Iteration 
+ * verschluesselt (bzw. entschluesselt).
+ * 
+ * @author Dennis Keßler 1326697
+ * @author Pınar Kırış 1332722
+ */
+
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
