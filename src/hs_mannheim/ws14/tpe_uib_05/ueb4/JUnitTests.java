@@ -257,14 +257,19 @@ public class JUnitTests {
 		assertEquals("DIESISTEINTEST", result2.toString());
 	}
 
-	// (expected = CrypterException.class)
-	public void testCaesarAusnahme() throws CrypterException {
-
-		Crypter caesar = new CrypterFactory().createCrypter("E",
+	public void crypterCaesarAusnahmeMessage() throws CrypterException {
+		Crypter caesar = new CrypterFactory().createCrypter("A",
 				Enumeration.CAESAR);
-		String test = "qweqw48";
-		caesar.decrypt(test);
+		Crypter caesar1 = new CrypterFactory().createCrypter("b",
+				Enumeration.CAESAR);
+		Crypter caesar2 = new CrypterFactory().createCrypter("C",
+				Enumeration.CAESAR);
+		caesar.encrypt("KEKSE");
+		caesar1.decrypt("COOKIE");
 
+		List<String> liste = Arrays.asList("DIES", "IST", "EIN", "TEST");
+		caesar2.encrypt(liste);
+		caesar2.decrypt(liste);
 	}
 
 }

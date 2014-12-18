@@ -10,38 +10,45 @@ public class IterableCrypter implements Iterable<String> {
 	private List<String> list;
 
 	/**
-	 * Konstrukor um ein Objekt der Klasse IterableCrypter zu erzeugen. Hierzu
-	 * wird eine Liste, sowie eine Verschluesselungsart angegeben.
+	 * Konstrukor der ein Objekt der Klasse IterableCrypter erzeugt, wobei eine
+	 * Liste, sowie eine Verschluesselungsart angegeben wird.
 	 * 
-	 * @param liste Die Liste
-	 * @param cryptIn die Verschluesselungsart
-	 * @throws CrypterException Wird geworfen, falls bei der Verschluesselung 
-	 * ein Fehler auftritt.
+	 * @param liste
+	 *            die Liste
+	 * @param cryptIn
+	 *            die Verschluesselungsart
 	 */
-	public IterableCrypter(List<String> liste, Crypter cryptIn) throws CrypterException {
+
+	public IterableCrypter(List<String> liste, Crypter cryptIn)
+			throws CrypterException {
 		this.list = liste;
 		this.crypt = cryptIn;
 	}
+
 	/**
-	 * Konstrukor um ein Objekt der Klasse IterableCrypter zu erzeugen. Hierzu
-	 * ein Iterable, sowie eine Verschluesselungsart angegeben.
+	 * Konstrukor der ein Objekt der Klasse IterableCrypter erzeugt, wobei eine
+	 * Liste, sowie eine Verschluesselungsart angegeben wird.
 	 * 
-	 * @param iterableCrypt das Iterabl
-	 * @param cryptIn die Verschluesselungsart
-	 * @throws CrypterException Wird geworfen, falls bei der Verschluesselung 
-	 * ein Fehler auftritt.
+	 * @param iterableCrypt
+	 *            das Iterable
+	 * @param cryptIn
+	 *            die Verschluesselungsart
 	 */
-	public IterableCrypter(Iterable<String> iterableCrypt, Crypter cryptIn) throws CrypterException {
-			list = new LinkedList<String>();
-            for (String str : iterableCrypt) {
-                list.add(str);
-            }
-            this.crypt = cryptIn;
+
+	public IterableCrypter(Iterable<String> iterableCrypt, Crypter cryptIn)
+			throws CrypterException {
+		list = new LinkedList<String>();
+		for (String text : iterableCrypt) {
+			list.add(text);
+		}
+		this.crypt = cryptIn;
 	}
+
 	/**
-	 * Methode, die eine interne anonyme Klasse beinhaltet, zur 
-	 * Implementierung des Iterators.
+	 * Methode, die eine interne anonyme Klasse beinhaltet, zur Implementierung
+	 * des Iterators.
 	 */
+	
 	@Override
 	public Iterator<String> iterator() {
 		return new Iterator<String>() {
@@ -57,8 +64,7 @@ public class IterableCrypter implements Iterable<String> {
 			public String next() {
 				try {
 					return crypt.encrypt(list.get(pos++));
-				}
-				catch (CrypterException e) {
+				} catch (CrypterException e) {
 					System.out.println(e.getMessage());
 				}
 				return null;
@@ -67,9 +73,9 @@ public class IterableCrypter implements Iterable<String> {
 
 			@Override
 			public void remove() {
-				// TODO Auto-generated method stub
 				
-			}};
+			}
+		};
 	}
 
 }

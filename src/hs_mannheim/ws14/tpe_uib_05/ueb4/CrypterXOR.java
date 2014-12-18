@@ -1,6 +1,5 @@
 package hs_mannheim.ws14.tpe_uib_05.ueb4;
 
-import java.math.BigInteger;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -74,16 +73,16 @@ public class CrypterXOR implements Crypter {
 		while (zBin.length() < 5) {
 			zBin = "0" + zBin;
 		}
-		StringBuffer result = new StringBuffer();
+		StringBuffer ergebnis = new StringBuffer();
 		for (int i = 0; i < 5; i++) {
 			if (yBin.charAt(i) == zBin.charAt(i)) {
-				result.append("0");
+				ergebnis.append("0");
 			} else {
-				result.append("1");
+				ergebnis.append("1");
 			}
 		}
 		
-		int dez = Integer.parseInt(result.toString(), 2);
+		int dez = Integer.parseInt(ergebnis.toString(), 2);
 		char[] zeichen = { '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
 				'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
 				'V', 'W', 'X', 'Y', 'Z', '[', '\\', ']', '^', '_' };
@@ -97,6 +96,7 @@ public class CrypterXOR implements Crypter {
 	 *            das Zeichen
 	 * @return Dezimalzahl
 	 */
+	
 	private int charToValue(char a) {
 		String alpha = ("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");
 		for (int i = 0; i < alpha.length(); i++) {

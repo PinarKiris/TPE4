@@ -27,13 +27,13 @@ public class CrypterCaesar implements Crypter {
 		return encrypt(message, shift);
 	}
 
-	private String encrypt(String message, int verschiebung) {
+	private String encrypt(String message, int shift) {
 		message = message.toUpperCase();
 		String ergebnis = "";
 
 		for (int i = 0; i < message.length(); i++) {
 			ergebnis = ergebnis
-					+ (char) ((message.charAt(i) - 65 + verschiebung) % 26 + 65);
+					+ (char) ((message.charAt(i) - 65 + shift) % 26 + 65);
 		}
 		return ergebnis;
 	}
